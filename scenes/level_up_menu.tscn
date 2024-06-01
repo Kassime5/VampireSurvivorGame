@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://d375w1ofpu6hp"]
+
+[ext_resource type="Script" path="res://scenes/level_up_menu.gd" id="1_a87dv"]
+
+[node name="LevelUp_Menu" type="Control"]
+process_mode = 3
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a87dv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(1, 1, 1, 0.219608)
+
+[node name="DamageButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 338.0
+offset_right = 355.0
+offset_bottom = 517.0
+text = "Add Damage: 0
+"
+
+[node name="AttackSpeedButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 334.0
+offset_right = 729.0
+offset_bottom = 513.0
+text = "Add Attack Speed: 0"
+
+[node name="ProjectileSpeedButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 333.0
+offset_right = 1105.0
+offset_bottom = 512.0
+text = "Add Projectile Speed: 0"
+
+[node name="HealthButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 1167.0
+offset_top = 330.0
+offset_right = 1510.0
+offset_bottom = 509.0
+text = "Add Health: 0"
+
+[node name="AttackNumberButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 1551.0
+offset_top = 329.0
+offset_right = 1897.0
+offset_bottom = 508.0
+text = "Add Attack Number: 0"
+
+[node name="Cancel" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 863.0
+offset_top = 917.0
+offset_right = 1081.0
+offset_bottom = 1028.0
+text = "Close
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -952.0
+offset_top = -534.0
+offset_right = -441.0
+offset_bottom = -383.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Level Up points: 0"
+
+[connection signal="pressed" from="ColorRect/DamageButton" to="." method="_on_damage_button_pressed"]
+[connection signal="pressed" from="ColorRect/AttackSpeedButton" to="." method="_on_attack_speed_button_pressed"]
+[connection signal="pressed" from="ColorRect/ProjectileSpeedButton" to="." method="_on_projectile_speed_button_pressed"]
+[connection signal="pressed" from="ColorRect/HealthButton" to="." method="_on_health_button_pressed"]
+[connection signal="pressed" from="ColorRect/AttackNumberButton" to="." method="_on_attack_number_button_pressed"]
+[connection signal="pressed" from="ColorRect/Cancel" to="." method="_on_cancel_pressed"]
