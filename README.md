@@ -12,7 +12,7 @@ For now, only one playable character is available, with one type of enemy.
 
 ['Tiny Swords' by Pixel Frog](https://pixelfrog-assets.itch.io/tiny-swords) for almost all assets.
 
-Power Ups were created by me.
+Power Ups were created by me
 
 ### Screenshots
 
