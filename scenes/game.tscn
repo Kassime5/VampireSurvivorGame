@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6k8hgd7njk0i"]
+[gd_scene load_steps=9 format=3 uid="uid://c6k8hgd7njk0i"]
 
 [ext_resource type="Texture2D" uid="uid://xrfr3j7tltlv" path="res://Asset/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_gb07p"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_j06y0"]
-[ext_resource type="PackedScene" uid="uid://c63xe336x16s2" path="res://scenes/player.tscn" id="1_joap7"]
+[ext_resource type="PackedScene" uid="uid://c63xe336x16s2" path="res://scenes/Player/player.tscn" id="1_joap7"]
+[ext_resource type="Script" path="res://scenes/StopWatch.gd" id="4_nwpkw"]
+[ext_resource type="Script" path="res://scenes/Score.gd" id="4_qhmj4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tv6dk"]
 texture = ExtResource("1_gb07p")
@@ -1719,7 +1721,11 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_tv6dk")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pt03u"]
-bg_color = Color(1, 0, 0, 0.713726)
+bg_color = Color(1, 0, 0, 0.894118)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 anti_aliasing = false
 
 [node name="Game" type="Node2D"]
@@ -1734,18 +1740,60 @@ layer_0/tile_data = PackedInt32Array(-5308532, 65536, 1, -5242996, 65536, 2, -51
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource("1_joap7")]
-position = Vector2(-116, -82)
+z_index = 4
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.8, 0.8)
 
 [node name="HealthBar" type="ProgressBar" parent="Player"]
 z_index = 5
-offset_left = -793.0
-offset_top = 420.0
-offset_right = -559.0
-offset_bottom = 447.0
+offset_left = -125.0
+offset_top = 410.0
+offset_right = 125.0
+offset_bottom = 437.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_pt03u")
-show_percentage = false
+value = 90.0
+
+[node name="Score" type="Label" parent="Player"]
+offset_top = -449.0
+offset_right = 200.0
+offset_bottom = -391.0
+theme_override_font_sizes/font_size = 40
+text = "0000"
+horizontal_alignment = 1
+script = ExtResource("4_qhmj4")
+
+[node name="ScoreTimer" type="Timer" parent="Player/Score"]
+wait_time = 2.0
+autostart = true
+
+[node name="StopWatch" type="Label" parent="Player"]
+offset_left = -200.0
+offset_top = -449.0
+offset_right = 1.0
+offset_bottom = -391.0
+theme_override_font_sizes/font_size = 40
+text = "TIME"
+horizontal_alignment = 1
+script = ExtResource("4_nwpkw")
+
+[node name="InformationLabel" type="Label" parent="Player"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -398.0
+offset_right = 164.0
+offset_bottom = -339.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="InformationTimer" type="Timer" parent="Player/InformationLabel"]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Player/Score/ScoreTimer" to="Player/Score" method="_on_score_timer_timeout"]
+[connection signal="timeout" from="Player/InformationLabel/InformationTimer" to="Player" method="_on_information_timer_timeout"]

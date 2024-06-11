@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://bweylcsjhb014"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hty57"]
+[ext_resource type="Texture2D" uid="uid://dhbiofxpxjr5s" path="res://Asset/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides.png" id="1_jvtqe"]
+[ext_resource type="FontFile" uid="uid://dsfvqa5wwsctg" path="res://Asset/Tiny Swords (Update 010)/UI/SunnySpellsBasicRegular-Yz1Wv.ttf" id="1_k0f6i"]
+[ext_resource type="Texture2D" uid="uid://tdm86lfm1cp1" path="res://Asset/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="2_xbyr6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yvxyd"]
+texture = ExtResource("1_jvtqe")
+texture_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bq62x"]
+texture = ExtResource("1_jvtqe")
+texture_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x38xq"]
+texture = ExtResource("2_xbyr6")
+texture_margin_bottom = 7.0
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_hty57")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -641.0
+offset_top = -363.0
+offset_right = 640.0
+offset_bottom = 358.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 379.0
+offset_right = 903.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("1_k0f6i")
+theme_override_font_sizes/font_size = 40
+text = "Vampire Survivor Re-Creation
+Maxime"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScore" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 94.0
+offset_right = 903.0
+offset_bottom = 171.0
+theme_override_fonts/font = ExtResource("1_k0f6i")
+theme_override_font_sizes/font_size = 40
+text = "High Score: 00000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 271.0
+offset_right = 779.0
+offset_bottom = 363.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_k0f6i")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_yvxyd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bq62x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x38xq")
+text = "PLAY"
+
+[node name="QuitButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 363.0
+offset_right = 779.0
+offset_bottom = 455.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_k0f6i")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_yvxyd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bq62x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x38xq")
+text = "QUIT"
+
+[connection signal="pressed" from="Panel/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]

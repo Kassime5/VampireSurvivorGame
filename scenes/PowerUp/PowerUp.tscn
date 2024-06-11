@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbwr8or2mfnju"]
+
+[ext_resource type="Texture2D" uid="uid://to78kwutsfjr" path="res://Asset/Berserker.png" id="1_wxofu"]
+[ext_resource type="Texture2D" uid="uid://d1g3klai0jx0e" path="res://Asset/Chariot.png" id="2_7pmwm"]
+[ext_resource type="Texture2D" uid="uid://b56qniq6d0vhg" path="res://Asset/Deadeye.png" id="3_dojdu"]
+[ext_resource type="Texture2D" uid="uid://bnkpnrm8g238q" path="res://Asset/Flash.png" id="4_fivtq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0qgu"]
+atlas = ExtResource("1_wxofu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfu2w"]
+atlas = ExtResource("2_7pmwm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj740"]
+atlas = ExtResource("3_dojdu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw2u0"]
+atlas = ExtResource("4_fivtq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eqy6j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0qgu")
+}],
+"loop": true,
+"name": &"Berserker",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfu2w")
+}],
+"loop": true,
+"name": &"Chariot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj740")
+}],
+"loop": true,
+"name": &"Deadeye",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qw2u0")
+}],
+"loop": true,
+"name": &"Flash",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhoj4"]
+radius = 22.5
+
+[node name="PowerUp" type="AnimatedSprite2D" groups=["PowerUp"]]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_eqy6j")
+animation = &"Flash"
+
+[node name="Area2D" type="Area2D" parent="." groups=["PowerUp"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["PowerUp"]]
+shape = SubResource("CircleShape2D_yhoj4")
