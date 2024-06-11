@@ -119,7 +119,7 @@ func death():
 			pass
 	else:
 		pass
-	#get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	
 func get_enemies():
 	for child in get_children():

@@ -8,3 +8,5 @@
 # Packaged game files and archives
 *.pck
 *.zip
+
+*.tmp
