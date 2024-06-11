@@ -1,2 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
+*.exe
+
+# Export configurations
+export.cfg
+export_presets.cfg
