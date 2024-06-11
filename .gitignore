@@ -5,3 +5,7 @@
 # Export configurations
 export.cfg
 export_presets.cfg
+
+# Packaged game files and archives
+*.pck
+*.zip
