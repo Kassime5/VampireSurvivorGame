@@ -3,8 +3,7 @@
 *.exe
 
 # Export configurations
-export.cfg
-export_presets.cfg
+*.cfg
 
 # Packaged game files and archives
 *.pck
